@@ -52,7 +52,7 @@ describe "Dog" do
   end
 
   describe '.find_by_name' do
-    it 'returns a student that matches the name from the DB' do
+    it 'returns a dog that matches the name from the DB' do
       teddy.save
       teddy_from_db = Dog.find_by_name("Teddy")
       expect(teddy_from_db.name).to eq("Teddy")
@@ -61,7 +61,7 @@ describe "Dog" do
   end
 
   describe '.find_by_id' do
-    it 'returns a student that matches the name from the DB' do
+    it 'returns a dog that matches the name from the DB' do
       teddy.save
       teddy_from_db = Dog.find_by_id(1)
       expect(teddy_from_db.id).to eq(1)
