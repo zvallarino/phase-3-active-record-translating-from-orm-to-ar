@@ -29,6 +29,7 @@ describe "Dog" do
     it 'takes in a hash of attributes and uses metaprogramming to create a new dog object. Then it uses the #save method to save that dog to the database' do
       dog = Dog.create(name: "Ralph", breed: "lab")
       expect(dog.name).to eq("Ralph")
+      expect(dog.id).to eq(1)
     end
   end
 
