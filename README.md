@@ -14,4 +14,4 @@ test. Now with Active Record, the hard work is done for you! Run your tests and
 watch them fail. Then make sure your `Dog` class inherits from
 `ActiveRecord::Base` and watch them pass!
 
-<p data-visibility='hidden'>View <a href='https://learn.co/lessons/translating-orm-to-ar' title='Objectives:'>Objectives:</a> on Learn.co and start learning to code for free.</p>
+
