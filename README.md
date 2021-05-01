@@ -1,9 +1,9 @@
 # Translating From ORMs to Active Record
 
-## Objectives:
+## Learning Goals
 
-1. Understand how ActiveRecord abstracts powerful methods for you.
-2. Identify how to inherit your models.
+- Understand how Active Record abstracts powerful methods for you
+- Identify how to inherit your models
 
 ## Instructions
 
@@ -13,5 +13,3 @@ failing. In the past you had to write out each method individually to pass each
 test. Now with Active Record, the hard work is done for you! Run your tests and
 watch them fail. Then make sure your `Dog` class inherits from
 `ActiveRecord::Base` and watch them pass!
-
-
