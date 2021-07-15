@@ -1,14 +1,10 @@
-require "spec_helper"
-require "pry"
-
 describe "Dog" do
+  let(:teddy) { Dog.new(name: "Teddy", breed: "cockapoo") }
 
-  let(:teddy) {Dog.new(name: "Teddy", breed: "cockapoo")}
-
-  before do
-    DB.execute("DROP TABLE IF EXISTS dogs")
-    @sql_runner = SQLRunner.new(DB)
-    @sql_runner.execute_schema_migration_sql
+  before :suite do
+    db = ActiveRecord::Base.connection
+    db.execute("DROP TABLE IF EXISTS dogs")
+    db.execute("CREATE TABLE dogs (id INTEGER PRIMARY KEY, name TEXT, breed TEXT);")
   end
 
   describe "inheritence" do
@@ -19,9 +15,8 @@ describe "Dog" do
 
   describe "attributes" do
     it 'has a name and a breed' do
-      dog = Dog.new({name: "Fido", breed: "lab"})
-      expect(dog.name).to eq("Fido")
-      expect(dog.breed).to eq("lab")
+      dog = Dog.new(name: "Fido", breed: "lab")
+      expect(dog).to have_attributes(name: "Fido", breed: "lab")
     end
   end
 
@@ -35,7 +30,7 @@ describe "Dog" do
 
   describe '.save' do
     it 'saves an instance of the dog class to the database and then sets the given dogs `id` attribute' do
-      dog = Dog.new({name: "Fido", breed: "lab"})
+      dog = Dog.new(name: "Fido", breed: "lab")
       dog.save
       expect(dog.id).to eq(1)
     end
@@ -44,7 +39,7 @@ describe "Dog" do
   describe '.update' do
     it 'updates the record associated with a given instance' do
       teddy.save
-      teddy.update({name: "Teddy Jr."})
+      teddy.update(name: "Teddy Jr.")
       teddy_jr = Dog.find_by_name("Teddy Jr.")
       expect(teddy_jr.id).to eq(teddy.id)
     end
