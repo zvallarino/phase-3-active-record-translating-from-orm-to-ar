@@ -1,7 +1,7 @@
 describe "Dog" do
   let(:teddy) { Dog.new(name: "Teddy", breed: "cockapoo") }
 
-  before :suite do
+  before :each do
     db = ActiveRecord::Base.connection
     db.execute("DROP TABLE IF EXISTS dogs")
     db.execute("CREATE TABLE dogs (id INTEGER PRIMARY KEY, name TEXT, breed TEXT);")
